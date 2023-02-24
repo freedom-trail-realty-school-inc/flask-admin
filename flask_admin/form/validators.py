@@ -14,13 +14,10 @@ class FieldListInputRequired(object):
 
     def __call__(self, form, field):
         if type(field) is ModelSelectMultipleField:
-            print(field.data)
             if len(field.data) == 0:
                 field.errors[:] = []
                 raise StopValidation(gettext('This field requires at least one item.'))
         elif type(field) is SelectMultipleField:
-            print('SELECTFIELD')
-            print(field.data)
             if len(field.data) == 0:
                 field.errors[:] = []
                 raise StopValidation(gettext('This field requires at least one item.'))
